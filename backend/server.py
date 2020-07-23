@@ -21,6 +21,12 @@ async def notify_state():
         message = state_event()
         await asyncio.wait([user.send(message) for user in USERS])
 
+async def notify_message(message):
+    if USERS:
+        print("Inside USERS")
+        dic = json.dumps({ "type": "chat-message", "data" : message})
+        print(dic)
+        await asyncio.wait([user.send(dic) for user in USERS])
 
 async def notify_users():
     if USERS:  # asyncio.wait doesn't accept an empty list
@@ -45,12 +51,15 @@ async def counter(websocket, path):
         await websocket.send(state_event())
         async for message in websocket:
             data = json.loads(message)
+            print(data)
             if data["action"] == "minus":
                 STATE["value"] -= 1
                 await notify_state()
             elif data["action"] == "plus":
                 STATE["value"] += 1
                 await notify_state()
+            elif data["action"] == "chat-message":
+                await notify_message(data["message"])
             else:
                 print("unsupported event: {}", data)
     finally:
