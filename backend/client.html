@@ -69,7 +69,7 @@
                 message = document.querySelector(".message")
                 sendButton = document.querySelector("#buttonConnect")
                 textArea = document.querySelector("#textarea");
-                websocket = new WebSocket("ws://localhost:6789/");
+                websocket = new WebSocket("ws://localhost:6790/");
             minus.onclick = function (event) {
                 websocket.send(JSON.stringify({action: 'minus'}));
             }
