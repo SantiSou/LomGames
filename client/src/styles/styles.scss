@@ -1,6 +1,16 @@
 @import 'variables';
+@import 'fonts';
 @import '~rootstrap-ui/dist/styles/scss/index';
 @import '~loaders.css/src/animations/ball-scale-multiple';
+@import '~bootstrap/scss/bootstrap';
+
+@import './components/all';
+
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Roboto Mono', monospace;;
+}
 
 .loading-wrapper {
   align-items: center;
@@ -20,7 +30,9 @@
 }
 
 .header {
-  padding: 1rem;
+  font-family: 'Grenze Gotisch', cursive;
+  font-size: 3rem;
+  padding: 4vh;
   text-align: center;
 
   &__logo {

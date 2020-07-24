@@ -9,7 +9,9 @@ const initialState = {
 
 const actionHandlers = {
   [login.success]: (state, { payload }) => {
-    state.user = payload;
+    state.user = payload.user;
+    state.info = payload.info;
+    state.authenticated = true;
   },
   [signUp.success]: (state, { payload }) => {
     state.user = payload;
