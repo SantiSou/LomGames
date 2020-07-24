@@ -15,8 +15,8 @@ class LoggerMiddleware(object):
     def __call__(self, environ, start_response):
         request = Request(environ)
 
-        userName = request.args.get('username')
-        password = request.args.get('password')
+        userName = request.authorization.get('username')
+        password = request.authorization.get('password')
 
         if userName == self.userName and password == self.password:
             environ['user'] = {'name': 'Prueba'}
