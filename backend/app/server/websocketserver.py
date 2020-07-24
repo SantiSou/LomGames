@@ -64,13 +64,12 @@ async def counter(websocket, path):
             await tests(action,data)
             if action == "chat-message":
                 await notify_message(data)
-            else:
-                print("unsupported event: {}", action)
     finally:
         await unregister(websocket)
 
 
-start_server = websockets.serve(counter, config.SERVER_IP, config.SERVER_PORT)
 
-asyncio.get_event_loop().run_until_complete(start_server)
-asyncio.get_event_loop().run_forever()
+def startServer():
+    start_server = websockets.serve(counter, config.SERVER_IP, config.SERVER_PORT)
+    asyncio.get_event_loop().run_until_complete(start_server)
+    asyncio.get_event_loop().run_forever()
