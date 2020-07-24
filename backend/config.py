@@ -8,4 +8,4 @@ LOG_FOLDER="logs"
 
 ## CONNECTION STRING MONGODB COMPASS
 
-mongodb+srv://Drumsetto:jH9ZpMq6VfnjNBOP@cluster0.qlmhv.mongodb.net/test
+URI_MONGODB="mongodb+srv://Drumsetto:jH9ZpMq6VfnjNBOP@cluster0.qlmhv.mongodb.net/test"
