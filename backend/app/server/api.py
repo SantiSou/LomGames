@@ -5,7 +5,8 @@ from flask_pymongo import PyMongo
 
 
 app = flask.Flask(__name__)
-app.config["MONGO_URI"] = "mongodb+srv://Drumsetto:jH9ZpMq6VfnjNBOP@cluster0.qlmhv.mongodb.net/test" # URI a fuero por ModuleNotFoundError: No module named 'config'
+# URI a fuero por ModuleNotFoundError: No module named 'config'
+app.config["MONGO_URI"] = "mongodb+srv://Drumsetto:jH9ZpMq6VfnjNBOP@cluster0.qlmhv.mongodb.net/test"
 mongo = PyMongo(app)
 
 weapons = [
@@ -26,13 +27,14 @@ weapons = [
      'value': '3 silver'},
 ]
 
-@app.route('/', methods=['GET'])
 
+@app.route('/', methods=['GET'])
 def home_page():
     result = []
     for weapon in weapons:
         result.append(weapon)
     return jsonify(result)
+
 
 app.debug = True
 app.run()
