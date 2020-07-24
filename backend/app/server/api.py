@@ -2,11 +2,11 @@
 import flask
 from flask import request, jsonify, Flask, render_template
 from flask_pymongo import PyMongo
+import configs
 
 
 app = flask.Flask(__name__)
-# URI a fuero por ModuleNotFoundError: No module named 'config'
-app.config["MONGO_URI"] = "mongodb+srv://Drumsetto:jH9ZpMq6VfnjNBOP@cluster0.qlmhv.mongodb.net/test"
+app.config["MONGO_URI"] = configs.MONGO_URI
 mongo = PyMongo(app)
 
 weapons = [
