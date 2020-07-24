@@ -2,10 +2,11 @@
 import flask
 from flask import request, jsonify, Flask, render_template
 from flask_pymongo import PyMongo
+from app.server.loggermiddleware import LoggerMiddleware
 import configs
 
-
-app = flask.Flask(__name__)
+app = Flask(__name__)
+app.wsgi_app = LoggerMiddleware(app.wsgi_app)
 app.config["MONGO_URI"] = configs.MONGO_URI
 mongo = PyMongo(app)
 
@@ -30,10 +31,8 @@ weapons = [
 
 @app.route('/', methods=['GET'])
 def home_page():
-    result = []
-    for weapon in weapons:
-        result.append(weapon)
-    return jsonify(result)
+    user = request.environ['user']
+    return "Hi %s" % user['name']
 
 
 app.debug = True
