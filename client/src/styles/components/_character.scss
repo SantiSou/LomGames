@@ -1,0 +1,31 @@
+.character {
+  padding: 1rem 0 0 2rem;
+
+  &__label {
+    flex: 0 0 30%;
+  }
+
+  &__value {
+    flex: 0 0 70%;
+  }
+
+  &__full-value {
+    flex: 0 0 100%;
+  }
+
+  &__label,
+  &__value,
+  &__full-value {
+    font-size: 0.7rem;
+    margin-bottom: 1rem;
+  }
+
+  &__stats {
+    font-size: 0.8rem;
+    margin-top: 1.4rem;
+  }
+
+  &__name {
+    font-size: 0.9rem;
+  }
+}

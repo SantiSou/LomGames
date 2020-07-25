@@ -1,15 +1,21 @@
 import React, { useState, useCallback } from 'react';
+import { arrayOf, func, string } from 'prop-types';
 
-const HomePage = () => {
-  const [messages, setMessages] = useState([]);
+const Television = ({ messages = [], onSendMessage }) => {
   const [message, setMessage] = useState('');
-
   const onMessageChange = useCallback(event => setMessage(event.target.value), [setMessage]);
-  const onSend = useCallback(() => {
-    messages.push(message);
-    setMessages(messages);
+  const onSendMessageCallback = useCallback(() => {
+    onSendMessage(message);
     setMessage('');
-  }, [message, messages, setMessages, setMessage]);
+  }, [message, onSendMessage]);
+  const onEnter = useCallback(
+    event => {
+      if (event.keyCode == 13) {
+        onSendMessageCallback();
+      }
+    },
+    [onSendMessageCallback]
+  );
 
   return (
     <div className="television">
@@ -25,11 +31,12 @@ const HomePage = () => {
           type="text"
           className="form-control"
           placeholder="Message..."
+          onKeyDown={onEnter}
           onChange={onMessageChange}
           value={message}
         />
         <div className="input-group-append">
-          <button type="button" className="btn btn-secondary" onClick={onSend}>
+          <button type="button" className="btn btn-secondary" onClick={onSendMessageCallback}>
             Send
           </button>
         </div>
@@ -38,4 +45,9 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+Television.propTypes = {
+  messages: arrayOf(string),
+  onSendMessage: func.isRequired
+};
+
+export default Television;

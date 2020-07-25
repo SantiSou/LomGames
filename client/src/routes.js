@@ -1,7 +1,7 @@
 import React from 'react';
 
 import routesPaths from 'constants/routesPaths';
-import HomePage from 'pages/HomePage';
+import GamePage from 'pages/GamePage';
 import LoginPage from 'pages/LoginPage';
 import SignUpPage from 'pages/SignUpPage';
 import NotFoundPage from 'pages/NotFoundPage';
@@ -9,7 +9,7 @@ import NotFoundPage from 'pages/NotFoundPage';
 const routes = [
   {
     path: routesPaths.index,
-    component: <HomePage />,
+    component: <GamePage />,
     exact: true,
     private: true
   },
