@@ -36,4 +36,4 @@ def home_page():
 
 
 app.debug = True
-app.run()
+app.run(host=configs.SERVER_IP, port=configs.SERVER_PORT)
