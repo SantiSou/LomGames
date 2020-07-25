@@ -1,5 +1,5 @@
 import React from 'react';
-import { shape, string, number } from 'prop-types';
+import { CHARACTER_SHAPE } from 'constants/shapes';
 
 const Character = ({
   character: { name, classType, hp, ac, lvl, exp, expToLvl, str, dex, con, int, wis, cha }
@@ -37,21 +37,7 @@ const Character = ({
 };
 
 Character.propTypes = {
-  character: shape({
-    name: string.isRequired,
-    classType: string.isRequired,
-    hp: number.isRequired,
-    ac: number.isRequired,
-    lvl: number.isRequired,
-    exp: number.isRequired,
-    expToLvl: number.isRequired,
-    str: number.isRequired,
-    dex: number.isRequired,
-    con: number.isRequired,
-    int: number.isRequired,
-    wis: number.isRequired,
-    cha: number.isRequired
-  }).isRequired
+  character: CHARACTER_SHAPE.isRequired
 };
 
 export default Character;

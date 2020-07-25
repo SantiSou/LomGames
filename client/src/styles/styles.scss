@@ -33,7 +33,7 @@ body {
 .header {
   font-family: 'Grenze Gotisch', cursive;
   font-size: 2rem;
-  height: 18vh;
+  height: 15vh;
   padding: 4vh 0;
   text-align: center;
 
@@ -47,7 +47,7 @@ body {
 
   .left-panel {
     flex: 0.3;
-    padding: 19vh 1rem 0 0rem;
+    padding: 20vh 1rem 0 0rem;
   }
 
   .right-panel {
@@ -74,6 +74,7 @@ body {
     }
 
     .tab-selector-separator {
+      cursor: default;
       margin: 0 0.5rem;
     }
   }

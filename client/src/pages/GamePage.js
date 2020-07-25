@@ -2,10 +2,17 @@ import React, { useState, useCallback } from 'react';
 
 import Header from 'components/common/Header';
 import Television from 'components/game/Television';
-import Character from 'components/game/Character';
+import InfoTabs from 'components/game/InfoTabs';
 
 const GamePage = () => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    'La hechizera Megu tenía un montón de poderes espectaculares. Abría nueces sólo con la mirada, se teletransportaba con un mero chasquido; pero un día se dio cuenta que ya no era felíz',
+    'Qué debería hacer la hechicera?',
+    '1. Estudiar las artes oscuras de la Programación?',
+    '2. Llamar a Toto',
+    '3. Volver a empezar'
+  ]);
+
   const onSend = useCallback(
     message => {
       messages.push(message);
@@ -32,19 +39,7 @@ const GamePage = () => {
   return (
     <div className="panels d-flex flex-row">
       <div className="left-panel">
-        <div className="tabs">
-          <div className="tabs__selector">
-            <a className="info-tab-selector selected">STATS</a>
-            <span className="tab-selector-separator">|</span>
-            <a className="equip-tab-selector">EQUIP</a>
-            <span className="tab-selector-separator">|</span>
-            <a className="players-tab-selector">PLAYERS</a>
-          </div>
-          <div className="info-tab">
-            <Character character={character} />
-          </div>
-          <div className="players-tab" />
-        </div>
+        <InfoTabs character={character} />
       </div>
       <div className="right-panel">
         <Header />

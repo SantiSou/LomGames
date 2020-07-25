@@ -1,8 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { arrayOf, func, string } from 'prop-types';
+import cn from 'classnames';
 
 const Television = ({ messages = [], onSendMessage }) => {
   const [message, setMessage] = useState('');
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const onModeToggle = useCallback(() => setIsDarkMode(!isDarkMode), [isDarkMode, setIsDarkMode]);
   const onMessageChange = useCallback(event => setMessage(event.target.value), [setMessage]);
   const onSendMessageCallback = useCallback(() => {
     onSendMessage(message);
@@ -19,7 +23,16 @@ const Television = ({ messages = [], onSendMessage }) => {
 
   return (
     <div className="television">
-      <div className="television__frame">
+      <div className="television__mode d-flex justify-content-end">
+        <a onClick={onModeToggle} className={cn({ selected: !isDarkMode })}>
+          Light
+        </a>
+        <span className="television__mode__separator">|</span>
+        <a onClick={onModeToggle} className={cn({ selected: isDarkMode })}>
+          Dark
+        </a>
+      </div>
+      <div className={cn('television__frame', { dark: isDarkMode, light: !isDarkMode })}>
         {messages.map(msg => (
           <p className="television__message" key={msg}>
             {msg}
