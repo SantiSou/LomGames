@@ -1,0 +1,84 @@
+@import 'variables';
+@import 'mixins';
+@import 'fonts';
+@import '~rootstrap-ui/dist/styles/scss/index';
+@import '~loaders.css/src/animations/ball-scale-multiple';
+@import '~bootstrap/scss/bootstrap';
+
+@import './components/all';
+
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.loading-wrapper {
+  align-items: center;
+  display: flex;
+  height: 5rem;
+  justify-content: center;
+  width: 5rem;
+
+  // These two classes are required by react-loaders
+  .loader-hidden {
+    display: none;
+  }
+
+  .loader-active {
+    display: block;
+  }
+}
+
+.header {
+  font-family: 'Grenze Gotisch', cursive;
+  font-size: 2rem;
+  height: 15vh;
+  padding: 4vh 0;
+  text-align: center;
+
+  span {
+    font-size: 3rem;
+  }
+}
+
+.panels {
+  padding: 0 4rem;
+
+  .left-panel {
+    flex: 0.3;
+    padding: 20vh 1rem 0 0rem;
+  }
+
+  .right-panel {
+    flex: 0.7;
+    padding: 0 6rem 0 2rem;
+  }
+}
+
+.tabs {
+  font-family: 'Press Start 2P', cursive;
+
+  &__selector {
+    color: #888;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
+
+    a {
+      cursor: pointer;
+    }
+
+    a.selected {
+      color: white;
+      background-color: #313131;
+      box-shadow: 0px 0px 14px 3px #484848;
+      border-radius: 13%;
+    }
+
+    .tab-selector-separator {
+      cursor: default;
+      margin: 0 0.5rem;
+    }
+  }
+}
