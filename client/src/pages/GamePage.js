@@ -39,6 +39,9 @@ const GamePage = () => {
   return (
     <div className="panels d-flex flex-row">
       <div className="left-panel">
+        <nav className="navigation">
+          <a>&lt; Rooms</a> <span># Megu&apos;s life</span>
+        </nav>
         <InfoTabs character={character} />
       </div>
       <div className="right-panel">

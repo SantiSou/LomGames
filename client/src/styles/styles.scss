@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'mixins';
 @import 'fonts';
+
 @import '~rootstrap-ui/dist/styles/scss/index';
 @import '~loaders.css/src/animations/ball-scale-multiple';
 @import '~bootstrap/scss/bootstrap';
@@ -8,8 +9,8 @@
 @import './components/all';
 
 body {
-  background-color: black;
-  color: white;
+  background-color: $black;
+  color: $white;
   font-family: 'Roboto Mono', monospace;
 }
 
@@ -47,7 +48,7 @@ body {
 
   .left-panel {
     flex: 0.3;
-    padding: 20vh 1rem 0 0rem;
+    padding: 1rem 0 0rem;
   }
 
   .right-panel {
@@ -60,7 +61,7 @@ body {
   font-family: 'Press Start 2P', cursive;
 
   &__selector {
-    color: #888;
+    color: $grey-2;
     font-size: 0.8rem;
     margin-bottom: 0.8rem;
 
@@ -69,9 +70,9 @@ body {
     }
 
     a.selected {
-      color: white;
-      background-color: #313131;
-      box-shadow: 0px 0px 14px 3px #484848;
+      color: $white;
+      background-color: $grey-4;
+      box-shadow: 0px 0px 14px 3px $grey-3;
       border-radius: 13%;
     }
 
@@ -79,5 +80,14 @@ body {
       cursor: default;
       margin: 0 0.5rem;
     }
+  }
+}
+
+.navigation {
+  margin-bottom: 14vh;
+  margin-top: 0.5vh;
+
+  a {
+    cursor: pointer;
   }
 }
