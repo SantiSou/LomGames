@@ -1,3 +1,5 @@
+
+import requests, configs, bcrypt
 from flask import Blueprint, request
 import app.services.MongoServices as MongoServices
 import app.utils.utils as utils
@@ -10,9 +12,16 @@ def signup():
     data = request.get_json()
     username = data["username"]
     email = data["email"]
-    password = data["password"]
-    MongoServices.saveDocument({"username":username, "email" : email, "password" : password, "token" : utils.getRandomString(128)},"users")
-    return data
+    password = bcrypt.hashpw(data["password"].encode('utf-8'), bcrypt.gensalt())
+    user = MongoServices.getDocument({ "username": username},"users")
+    email_ = MongoServices.getDocument({ "email": email},"users")
+    if user:
+        return 'Usuario existente, seleccione otro.', 400
+    elif email_:
+        return 'Correo existente, seleccione otro.', 400
+    else:
+        MongoServices.saveDocument({"username":username, "email" : email, "password" : password, "token" : utils.getRandomString(128)},"users")
+        return data
 
 @users_api.route("/login",methods=["POST"])
 def login():
@@ -22,6 +31,6 @@ def login():
     user = MongoServices.getDocument({ "username": username},"users")
     if user:
         # Validamos el password acá
-        if user["password"] == password:
+        if bcrypt.checkpw(password.encode('utf-8'), user["password"]):
             return user["token"]
-    return ""
+    return "Usuario o contraseña incorrecto.", 400
