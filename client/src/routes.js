@@ -6,10 +6,12 @@ import LoginPage from 'pages/LoginPage';
 import SignUpPage from 'pages/SignUpPage';
 import NotFoundPage from 'pages/NotFoundPage';
 
+const room = { name: "# Megu's life" };
+
 const routes = [
   {
     path: routesPaths.index,
-    component: <GamePage />,
+    component: <GamePage room={room} />,
     exact: true,
     private: true
   },

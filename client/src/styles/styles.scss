@@ -60,10 +60,16 @@ body {
 .tabs {
   font-family: 'Press Start 2P', cursive;
 
+  &__tab {
+    @include scrollbars(5px, $white);
+    height: 60vh;
+    padding-right: 1.5rem;
+  }
+
   &__selector {
     color: $grey-2;
     font-size: 0.8rem;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.8rem;
 
     a {
       cursor: pointer;

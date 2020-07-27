@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useMemo } from 'react';
 
 import Character from 'components/game/Character';
+import Equipment from 'components/game/Equipment';
 import InfoTabsSelector from 'components/game/InfoTabsSelector';
 import { CHARACTER_SHAPE } from 'constants/shapes';
 import { INFO_TABS } from 'constants/constants';
@@ -16,7 +17,7 @@ const InfoTabs = ({ character }) => {
       case INFO_TABS.stats:
         return <Character character={character} />;
       case INFO_TABS.equip:
-        return <div className="players-tab" />;
+        return <Equipment character={character} />;
       case INFO_TABS.players:
         return <div className="players-tab" />;
       default:
@@ -45,7 +46,7 @@ const InfoTabs = ({ character }) => {
           selected={infoTab === INFO_TABS.players}
         />
       </div>
-      {currentTab}
+      <div className="tabs__tab d-inline-block">{currentTab}</div>
     </div>
   );
 };

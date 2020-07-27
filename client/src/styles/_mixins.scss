@@ -1,4 +1,6 @@
 @mixin scrollbars($size, $foreground-color) {
+  overflow: auto;
+
   // Firefox
   scrollbar-color: $foreground-color transparent;
   scrollbar-width: $size;
