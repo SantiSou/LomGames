@@ -32,12 +32,14 @@ const Television = ({ messages = [], onSendMessage }) => {
           Dark
         </a>
       </div>
-      <div className={cn('television__frame', { dark: isDarkMode, light: !isDarkMode })}>
-        {messages.map(msg => (
-          <p className="television__message" key={msg}>
-            {msg}
-          </p>
-        ))}
+      <div className={cn('television__outer-frame', { dark: isDarkMode, light: !isDarkMode })}>
+        <div className="television__frame">
+          {messages.map(msg => (
+            <p className="television__message" key={msg}>
+              {msg}
+            </p>
+          ))}
+        </div>
       </div>
       <div className="television__chat input-group">
         <input
