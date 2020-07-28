@@ -26,6 +26,13 @@ export const CHARACTER_SHAPE = shape({
   )
 });
 
+export const PLAYERS_SHAPE = arrayOf(
+  shape({
+    name: string.isRequired,
+    classType: string.isRequired
+  })
+);
+
 export const ROOM_SHAPE = shape({
   name: string.isRequired
 });

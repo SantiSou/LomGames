@@ -1,0 +1,12 @@
+.players {
+  font-size: 0.8rem;
+
+  .player {
+    margin-bottom: 1.5rem;
+
+    &__class-type {
+      color: $white-2;
+      font-size: 0.7rem;
+    }
+  }
+}

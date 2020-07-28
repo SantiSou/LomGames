@@ -64,6 +64,7 @@ body {
     @include scrollbars(5px, $white);
     height: 60vh;
     padding-right: 1.5rem;
+    width: 18.1rem;
   }
 
   &__selector {

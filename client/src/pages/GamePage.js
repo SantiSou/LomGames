@@ -43,13 +43,22 @@ const GamePage = ({ room: { name: roomName } }) => {
     ]
   });
 
+  const [players] = useState([
+    { name: 'Hackerman', classType: 'Knight' },
+    { name: 'AguZero', classType: 'Thief' },
+    { name: 'Drumsetto', classType: 'Demon' },
+    { name: 'Lazerth', classType: 'Mage' },
+    { name: 'Rizero', classType: 'Thief' },
+    { name: 'Zetru', classType: 'Furry' }
+  ]);
+
   return (
     <div className="panels d-flex flex-row">
       <div className="left-panel">
         <nav className="navigation">
           <a>&lt; Rooms</a> <span>{roomName}</span>
         </nav>
-        <InfoTabs character={character} />
+        <InfoTabs character={character} players={players} />
       </div>
       <div className="right-panel">
         <Header />

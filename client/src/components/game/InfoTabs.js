@@ -2,11 +2,12 @@ import React, { useCallback, useState, useMemo } from 'react';
 
 import Character from 'components/game/Character';
 import Equipment from 'components/game/Equipment';
+import Players from 'components/game/Players';
 import InfoTabsSelector from 'components/game/InfoTabsSelector';
-import { CHARACTER_SHAPE } from 'constants/shapes';
+import { CHARACTER_SHAPE, PLAYERS_SHAPE } from 'constants/shapes';
 import { INFO_TABS } from 'constants/constants';
 
-const InfoTabs = ({ character }) => {
+const InfoTabs = ({ character, players }) => {
   const [infoTab, setInfoTab] = useState(INFO_TABS.stats);
   const onStatsTab = useCallback(() => setInfoTab(INFO_TABS.stats), [setInfoTab]);
   const onEquipTab = useCallback(() => setInfoTab(INFO_TABS.equip), [setInfoTab]);
@@ -19,11 +20,11 @@ const InfoTabs = ({ character }) => {
       case INFO_TABS.equip:
         return <Equipment character={character} />;
       case INFO_TABS.players:
-        return <div className="players-tab" />;
+        return <Players players={players} />;
       default:
         return null;
     }
-  }, [character, infoTab]);
+  }, [character, infoTab, players]);
 
   return (
     <div className="tabs">
@@ -52,7 +53,8 @@ const InfoTabs = ({ character }) => {
 };
 
 InfoTabs.propTypes = {
-  character: CHARACTER_SHAPE
+  character: CHARACTER_SHAPE,
+  players: PLAYERS_SHAPE
 };
 
 export default InfoTabs;
