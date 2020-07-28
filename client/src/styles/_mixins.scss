@@ -1,5 +1,11 @@
-@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
-  // For Google Chrome
+@mixin scrollbars($size, $foreground-color) {
+  overflow: auto;
+
+  // Firefox
+  scrollbar-color: $foreground-color transparent;
+  scrollbar-width: $size;
+
+  // Google Chrome
   &::-webkit-scrollbar {
     width: $size;
     height: $size;
@@ -7,15 +13,21 @@
 
   &::-webkit-scrollbar-thumb {
     background: $foreground-color;
+    border-radius: 8px;
+    visibility: hidden;
   }
 
   &::-webkit-scrollbar-track {
     border-radius: 10px;
   }
 
-  // For Internet Explorer
+  &:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+  }
+
+  // Internet Explorer
   & {
     scrollbar-face-color: $foreground-color;
-    scrollbar-track-color: $background-color;
+    scrollbar-track-color: transparent;
   }
 }
